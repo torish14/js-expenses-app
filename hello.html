@@ -7,9 +7,16 @@
   </head>
   <body>
     <script>
-      document.write(10 + 30)
-      document.write('<br />')
-      document.write(40 + 20)
+      let tax = 1.1
+      function recept(tax) {
+        let egg = 300 * tax
+        let rice = 1000 * tax
+        let sauce = 200 * tax
+        let total = egg + rice + sauce
+        return total
+      }
+      let pay = recept(tax)
+      document.write(pay)
     </script>
   </body>
 </html>
