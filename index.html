@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>MyMoney SampleCode</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+
+    <!-- sakura.css の読み込みと、画面レイアウトのスタイルシートの読み込み -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sakura.css/css/sakura-earthly.css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <!-- IndexedDB関連の JavaScript の読み込み -->
+    <script src="indexedDB.js"></script>
+
+    <!-- Chart.js とグラフ表示の JavaScript の読み込み -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="graph.js"></script>
+
+    <!-- フォーム入力チェックの JavaScript 読み込み -->
+    <script src="inputCheck.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>MyMoney</h1>
+      <div class="navi">
+        <button>ホーム</button>
+        <button>入力</button>
+        <button>入出金一覧</button>
+        <button>グラフ</button>
+      </div>
+    </header>
+    <article>
+      <!-- 入力 -->
+      <h2>入力</h2>
+      <section id="inputSection">
+        <div>
+          <label>収支</label>
+          <input type="radio" value="支出" checked />支出
+          <input type="radio" value="収入" />収入
+          <label>日付</label>
+          <input type="date" />
+          <label>カテゴリ</label>
+
+          <select>
+            <option>選択してください</option>
+            <option>食費</option>
+            <option>趣味</option>
+            <option>交際費</option>
+            <option>交通費</option>
+            <option>ファッション</option>
+            <option>クルマ</option>
+            <option>家賃</option>
+            <option>保険</option>
+            <option>税金</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div>
+          <label>金額</label>
+          <input type="number" placeholder="金額を記入" />円
+          <label>メモ</label>
+          <input type="text" placeholder="買ったものを記入" />
+        </div>
+      </section>
+      <div class="submit">
+        <button>登録する</button>
+      </div>
+
+      <!-- 入出金一覧 -->
+      <h2>入出金一覧</h2>
+      <selection id="list">
+        <!-- ここに入出金一覧を表示する -->
+      </selection>
+
+      <!-- グラフ -->
+      <h2>グラフ</h2>
+      <!-- <hr> -->
+      <section>
+        <!-- ここにグラフを表示する -->
+      </section>
+    </article>
+    <footer>&copy;MyMoney</footer>
+  </body>
+</html>
