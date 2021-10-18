@@ -51,13 +51,25 @@
       <section id="inputSection">
         <div>
           <label>収支</label>
-          <input type="radio" value="支出" checked />支出
-          <input type="radio" value="収入" />収入
+          <!-- disableSelectBox関数の呼び出し -->
+          <input
+            name="balance"
+            type="radio"
+            value="支出"
+            onclick="disableSelectBox(false);"
+            checked
+          />支出
+          <input
+            name="balance"
+            type="radio"
+            value="収入"
+            onclick="disableSelectBox(true);"
+          />収入
           <label>日付</label>
           <input type="date" />
           <label>カテゴリ</label>
 
-          <select>
+          <select id="category">
             <option>選択してください</option>
             <option>食費</option>
             <option>趣味</option>
