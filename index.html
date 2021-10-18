@@ -28,17 +28,26 @@
 
   <body>
     <header>
-      <h1>MyMoney</h1>
+      <h1 id="home">MyMoney</h1>
       <div class="navigation">
-        <button>ホーム</button>
-        <button>入力</button>
-        <button>入出金一覧</button>
-        <button>グラフ</button>
+        <!-- window.location.hash = '#' で id="" の要素までスクロール -->
+        <button onclick="window.location.hash = '#home'">
+          ホーム
+        </button>
+        <button onclick="window.location.hash = '#input'">
+          入力
+        </button>
+        <button onclick="window.location.hash = '#inOutList'">
+          入出金一覧
+        </button>
+        <button onclick="window.location.hash = '#graph'">
+          グラフ
+        </button>
       </div>
     </header>
     <article>
       <!-- 入力 -->
-      <h2>入力</h2>
+      <h2 id="input">入力</h2>
       <section id="inputSection">
         <div>
           <label>収支</label>
@@ -74,13 +83,13 @@
       </div>
 
       <!-- 入出金一覧 -->
-      <h2>入出金一覧</h2>
+      <h2 id="inOutList">入出金一覧</h2>
       <selection id="list">
         <!-- ここに入出金一覧を表示する -->
       </selection>
 
       <!-- グラフ -->
-      <h2>グラフ</h2>
+      <h2 id="graph">グラフ</h2>
       <!-- <hr> -->
       <section>
         <!-- ここにグラフを表示する -->
