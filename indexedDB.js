@@ -94,5 +94,17 @@ function insertData(balance, date, category, amount, memo) {
     transaction.onerror = function (event) {
       console.log('トランザクションエラー')
     }
+
+    let store = transaction.objectStore(storeName)
+    let addData = store.add(data)
+    addData.onsuccess = function () {
+      console.log('データが登録できました')
+      alert('登録しました')
+    }
+    addData.onerror = function () {
+      console.log('データが登録できませんでした')
+    }
+    // DB を閉じる
+    db.close()
   }
 }
