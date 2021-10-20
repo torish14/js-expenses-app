@@ -27,3 +27,72 @@ database.onsuccess = function (event) {
 database.onerror = function (event) {
   console.log('データベースに接続できませんでした')
 }
+
+// フォーム内容を DB に登録する
+function register() {
+  // フォームの入力チェック
+  // false が返却されたら登録処理を中断
+  if (inputCheck() == false) {
+    return
+  }
+
+  // ラジオボタンのデータを取得
+  // name属性が balance のラジオボタンのデータを取得
+  let radio = document.getElementsByName('balance')
+  let balance
+  for (let i = 0; i < radio.length; i++) {
+    if (radio[i].checked == true) {
+      balance = radio[i].value
+      break
+    }
+  }
+
+  // フォームに入力された値を取得
+  let date = document.getElementById('date').value
+  let amount = document.getElementById('amount').value
+  let memo = document.getElementById('memo').value
+  let category = document.getElementById('category').value
+  // ラジオボタンが収入を選択時はカテゴリを「収入」にする
+  if (balance == '収入') {
+    category = '収入'
+  }
+
+  // データベースにデータを登録する
+  insertData(balance, date, category, amount, memo)
+}
+
+// データの挿入
+function insertData(balance, date, category, amount, memo) {
+  // 一意の ID を現在の日時から作成
+  let uniqueID = new Date().getTime().toString()
+  console.log(uniqueID)
+  // DB に登録するための連想配列のデータを作成
+  let data = {
+    id: uniqueID,
+    balance: balance,
+    date: String(date),
+    category: category,
+    amount: amount,
+    memo: memo,
+  }
+
+  // データベースを開く
+  let database = indexedDB.open(dbName, dbVersion)
+
+  // データベースの開けなかった時の処理
+  database.onerror = function (event) {
+    console.log('データベースに接続できませんでした')
+  }
+
+  // データベースを開いたらデータの登録を実行
+  database.onsuccess = function (event) {
+    let db = event.target.result
+    let transaction = db.transaction(storeName, 'readwrite')
+    transaction.oncomplete = function (event) {
+      console.log('トランザクション完了')
+    }
+    transaction.onerror = function (event) {
+      console.log('トランザクションエラー')
+    }
+  }
+}
