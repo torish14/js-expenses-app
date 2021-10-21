@@ -59,6 +59,9 @@ function register() {
 
   // データベースにデータを登録する
   insertData(balance, date, category, amount, memo)
+
+  // 入出金一覧を作成
+  createList()
 }
 
 // データの挿入
